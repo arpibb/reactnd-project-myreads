@@ -14,7 +14,7 @@ class BooksAppReact extends React.Component {
     BooksAPI.getAll()
       .then((books) => {
         this.setState(()=>({
-          books
+          books: [...books]
         }))
       })
   }
@@ -24,13 +24,11 @@ class BooksAppReact extends React.Component {
       <div>
         <Route exact path='/' render={() => (
           <ListMyBooks
-            books={this.state.bookss}
-            onDeleteBook={this.removeBook}
+            books={this.state.books}
           />
         )} />
         <Route path='/search' render={({ history }) => (
-          <SearchBooks
-          />
+          <SearchBooks/>
         )} />
       </div>
     )
